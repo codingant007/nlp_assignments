@@ -8,6 +8,7 @@
 - Move the boundary if `"` exist
 	- She turned to him, "This is great." she said.
 	=> ["She turned to him, \"This is great.\" she said."]
+	- In case double quotes is followed by lowecase letter merge the following sentence.
 
 - Disqualify `.` if 
 	- Preceeded by a valid abbrevation
@@ -27,4 +28,25 @@
 
 #Word segmentation heuristics
 
-- 
+- Word can be preceeded by
+	- ^
+	- Space
+	- Punctuation
+		- `"`
+		- `'`
+- Word can be follwed by
+	- Punctuation
+		- `,`
+		- `.`
+		- `;`
+		- `'`
+		- `"`
+	- Annotation
+		- `?`
+		- `!`
+
+- Nikhil's must be a single word
+- At-least must be a single word
+- Phones' must be a single word
+- 100.00 must be a single word
+- Mr. Alamanda must be a single word
