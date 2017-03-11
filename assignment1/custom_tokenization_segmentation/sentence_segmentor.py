@@ -2,34 +2,34 @@ import re
 
 def sentence_segment(text):
 	print "Raw Text:"
-	print text
-	print
+	#print text
+	#print
 	# Consider `!`, `?` and `.` as sentence boundaries and split
 	sentences = split_by_boundary(text)
 	print "Split by boundary:"
-	print sentences
-	print
+	#print sentences
+	#print
 	# Move boundary if `"` exists after `.`
 	sentences = move_boundary(sentences)
 	print "Move boundary:"
-	print sentences
-	print
+	#print sentences
+	#print
 	# Disqualify `.` if abbrevation
 	sentences = merge_at_abbrevation(sentences)
 	print "Merge at abbrevations:"
-	print sentences
-	print
+	#print sentences
+	#print
 	# Disqualify `!` and `?` if followed by lowercase
 	sentences = merge_at_annotation(sentences)
 	print "Disqualify annotations:"
-	print sentences
-	print
+	#print sentences
+	#print
 	# Filter the empty sentences
 	sentences = filter(None, sentences)
 	sentences = filter(lambda x: re.match(r' *',x) , sentences)
 	print "Final filter for empty sentences"
-	print sentences
-	print
+	#print sentences
+	#print
 	return sentences
 
 """
@@ -109,7 +109,7 @@ def is_abbrevation(word):
 
 
 def ends_with_abbrevation(sentence):
-	m = re.match(r'^(.* )*(.*)\.', sentence)
+	m = re.match(r'^(.* )(.*)\.', sentence)
 	if m:
 		if is_abbrevation(m.group(2)):
 			return True
@@ -119,7 +119,7 @@ def merge_at_abbrevation(sentences):
 	result = [sentences[0]]
 	# From second sentence 
 	for i in range(len(sentences)-1):
-		# Append next sentence to ith if ith it ends with abbrevation
+		# Append next sentence to ith if ith ends with abbrevation
 		if ends_with_abbrevation(sentences[i]):
 			result[-1] += sentences[i+1]
 		# Add next sentence if the current sentence doesn't end with abbrevation
@@ -159,6 +159,7 @@ def merge_at_annotation(sentences):
 	return result
 
 if __name__ == "__main__":
-	sentence_segment("St. Michael's Church is on 5th st. near the light.")
-	sentence_segment("She turned to him, \"This is great.\" she said.")
+	#sentence_segment("St. Michael's Church is on 5th st. near the light.")
+	#sentence_segment("She turned to him, \"This is great.\" she said.")
+	ends_with_abbrevation("   But with the months moving on- and the immediate confrontations with the Communists showing no gain for the free world- the question arises:How effective have Kennedy administration first foreign policy decisions been in dealing with Communist aggression?")
 

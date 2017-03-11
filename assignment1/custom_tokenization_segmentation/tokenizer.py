@@ -14,7 +14,8 @@ def tokenize(sentence):
 	for symbol in split_symbols:
 		words = split_with_delimiter(words, symbol)
 	# Filter all the spaces among the tokens
-	words = [ word for word in words if word != ' ']
+	words = [ word for word in words if word!=' ']
+	#words = [ word for word in words if word!=' 'and word!='.' and word!=';' and word!=',' and word!='?' and word!='!']
 	return words
 
 # Split ['Mr.Langdon','is','here.'] with `.` => ['Mr', '.', 'Langdon', 'is', 'here', '.']

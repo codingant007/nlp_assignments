@@ -50,3 +50,6 @@
 - Phones' must be a single word
 - 100.00 must be a single word
 - Mr. Alamanda must be a single word
+
+- $ handling
+- 
